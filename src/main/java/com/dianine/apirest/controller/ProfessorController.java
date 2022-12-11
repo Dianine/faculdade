@@ -6,6 +6,8 @@ import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/professor")
 @AllArgsConstructor
@@ -17,5 +19,10 @@ public class ProfessorController {
     @ResponseStatus(HttpStatus.CREATED)
     public void Create(@RequestBody Professor professor){
         service.create(professor);
+    }
+    @GetMapping
+    @ResponseStatus(HttpStatus.OK)
+    public List<Professor> findAll(){
+        return service.findAll();
     }
 }
